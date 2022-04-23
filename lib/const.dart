@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 const String kTitle = 'Карточки Домана';
+const String tTextPlay = 'Игра';
 
-final kGradientBoxDecoration = BoxDecoration(
+const kGradientBoxDecoration = BoxDecoration(
     gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: const [Colors.purple, Colors.orange]));
+        colors: [Colors.purple, Colors.orange]));
+
+        const kTextBold = TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
