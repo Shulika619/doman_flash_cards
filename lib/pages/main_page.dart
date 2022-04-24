@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
                           style: kTextBold),
                       subtitle: Text(
                           'количество карточек: ${CategoryList.items[index].imgList.length}'),
-                      leading: FlutterLogo(size: 70),
+                      leading: const FlutterLogo(size: 70),
                       trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                   );

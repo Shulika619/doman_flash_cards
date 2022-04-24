@@ -2,6 +2,7 @@ import 'package:doman_flash_cards/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:doman_flash_cards/const.dart';
 
+final bucketGlobal = PageStorageBucket();
 class SelectedCategory extends StatelessWidget {
   final int indexCategory;
 
@@ -24,26 +25,29 @@ class SelectedCategory extends StatelessWidget {
       body: Container(
         decoration: kGradientBoxDecoration,
         child: SafeArea(
-          child: GridView.builder(
-            key: PageStorageKey<String>('gridPage'),
-            itemCount: CategoryList.items[indexCategory].imgList.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 2,
-              crossAxisSpacing: 4,
-              childAspectRatio: 6 / 9,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return GridTile(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: Image.asset(
-                    'assets/$categoryName/${categoryItems[index]}.jpg', // TODO
-                    fit: BoxFit.cover,
+          child: PageStorage(
+            bucket: bucketGlobal,
+            child: GridView.builder(
+              key: const PageStorageKey<String>('gridPage'),
+              itemCount: CategoryList.items[indexCategory].imgList.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 2,
+                crossAxisSpacing: 4,
+                childAspectRatio: 6 / 9,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return GridTile(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15.0),
+                    child: Image.asset(
+                      'assets/$categoryName/${categoryItems[index]}.jpg', // TODO
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),
