@@ -1,4 +1,5 @@
 import 'package:doman_flash_cards/models/category_model.dart';
+import 'package:doman_flash_cards/pages/play_page.dart';
 import 'package:flutter/material.dart';
 import 'package:doman_flash_cards/const.dart';
 
@@ -32,17 +33,20 @@ class SelectedCategory extends StatelessWidget {
               itemCount: CategoryList.items[indexCategory].imgList.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 2,
-                crossAxisSpacing: 4,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 2,
                 childAspectRatio: 6 / 9,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return GridTile(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0),
-                    child: Image.asset(
-                      'assets/$categoryName/${categoryItems[index]}.jpg', // TODO
-                      fit: BoxFit.cover,
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridTile(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0),
+                      child: Image.asset(
+                        'assets/$categoryName/${categoryItems[index]}.jpg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 );
@@ -52,11 +56,16 @@ class SelectedCategory extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text(tTextPlay),
+        onPressed: () {
+            Route route = MaterialPageRoute(builder: (context) => PlayPage(indexCategory: indexCategory));
+            Navigator.push(context, route);
+        },
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        label: const Text(kTextPlay),
         icon: const Icon(Icons.play_arrow),
         // backgroundColor: Colors.pink,
-      ),
+      ),floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
