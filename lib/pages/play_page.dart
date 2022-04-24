@@ -1,6 +1,8 @@
 import 'package:doman_flash_cards/const.dart';
 import 'package:doman_flash_cards/models/category_model.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({required this.indexCategory, Key? key}) : super(key: key);
@@ -12,11 +14,16 @@ class PlayPage extends StatefulWidget {
 }
 
 class _PlayPageState extends State<PlayPage> {
+  late String categoryName;
   late final List<String> imgList;
   late List<String> randomList;
+  late String randonItem;
+  Random random = Random();
+  String playerChose = '';
 
   @override
   void initState() {
+    categoryName = CategoryList.items[widget.indexCategory].name;
     imgList = CategoryList.items[widget.indexCategory].imgList;
     randomCards();
     super.initState();
@@ -24,8 +31,27 @@ class _PlayPageState extends State<PlayPage> {
 
   void randomCards() {
     imgList.shuffle();
-    // randomList = imgList.; // TODO
-    print(imgList); //TODO
+    randomList = imgList.sublist(0, kNumRandomElements);
+    randonItem = randomList[random.nextInt(kNumRandomElements)];
+  }
+
+  void resultCheck() {
+    if (playerChose == randonItem) {
+      Fluttertoast.showToast(
+          msg: '✅ Правильный ответ!',
+          fontSize: 18,
+          backgroundColor: Colors.green);
+      Future.delayed(const Duration(milliseconds: 2500), () {
+        setState(() {
+          randomCards();
+        });
+      });
+    } else {
+      Fluttertoast.showToast(
+          msg: '⛔️ Неправильный ответ!',
+          fontSize: 18,
+          backgroundColor: Colors.red);
+    }
   }
 
   @override
@@ -45,7 +71,41 @@ class _PlayPageState extends State<PlayPage> {
           child: Column(
             children: [
               kQuestionTxt,
-              Text('${widget.indexCategory}'),
+              Text(randonItem.toUpperCase(),
+                  style: kRandomItemTxt, textAlign: TextAlign.center),
+              const SizedBox(height: 25),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: randomList.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: kNumRandomElements,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 2,
+                    childAspectRatio: 6 / 9,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          playerChose = randomList[index];
+                          resultCheck();
+                        },
+                        child: GridTile(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: Image.asset(
+                              'assets/$categoryName/${randomList[index]}.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

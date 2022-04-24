@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 const String kTitle = 'Карточки Домана';
 const String kTextPlay = 'Игра';
 const String kPlayAppBarTxt = 'Проверь свои знания';
+const int kNumRandomElements = 3;
 
 
 const kQuestionTxt = Text('Покажи где', style: TextStyle(fontSize: 55, fontWeight: FontWeight.bold),);
+const kRandomItemTxt = TextStyle(fontSize: 45, fontWeight: FontWeight.bold);
 
 const kGradientBoxDecoration = BoxDecoration(
     gradient: LinearGradient(
