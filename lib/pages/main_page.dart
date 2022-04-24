@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
                         Navigator.push(
                             context, MaterialPageRoute(builder: (context) => SelectedCategory(indexCategory: index)));
                       },
-                      title: Text(CategoryList.items[index].name,
+                      title: Text(CategoryList.items[index].name.toUpperCase(),
                           style: kTextBold),
                       subtitle: Text(
                           'количество карточек: ${CategoryList.items[index].imgList.length}'),

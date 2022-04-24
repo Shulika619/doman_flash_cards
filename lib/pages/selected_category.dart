@@ -10,7 +10,8 @@ class SelectedCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String categoryName = CategoryList.items[indexCategory].name;
+    final categoryName = CategoryList.items[indexCategory].name;
+    final categoryItems = CategoryList.items[indexCategory].imgList;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -24,6 +25,7 @@ class SelectedCategory extends StatelessWidget {
         decoration: kGradientBoxDecoration,
         child: SafeArea(
           child: GridView.builder(
+            key: PageStorageKey<String>('gridPage'),
             itemCount: CategoryList.items[indexCategory].imgList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -36,7 +38,7 @@ class SelectedCategory extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Image.asset(
-                    'assets/$categoryName/${CategoryList.items[indexCategory].imgList[index]}.jpg', // TODO
+                    'assets/$categoryName/${categoryItems[index]}.jpg', // TODO
                     fit: BoxFit.cover,
                   ),
                 ),

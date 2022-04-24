@@ -9,4 +9,4 @@ const kGradientBoxDecoration = BoxDecoration(
         end: Alignment.bottomRight,
         colors: [Colors.purple, Colors.orange]));
 
-        const kTextBold = TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
+const kTextBold = TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
