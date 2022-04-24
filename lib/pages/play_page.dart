@@ -68,6 +68,7 @@ class _PlayPageState extends State<PlayPage> {
 
   @override
   Widget build(BuildContext context) {
+    var isPortrait = MediaQuery.of(context).orientation;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -82,10 +83,10 @@ class _PlayPageState extends State<PlayPage> {
         child: SafeArea(
           child: Column(
             children: [
-              kQuestionTxt,
+              isPortrait == Orientation.portrait ? kQuestionTxt: kQuestionTxtSmall,
               Text(randonItem.toUpperCase(),
-                  style: kRandomItemTxt, textAlign: TextAlign.center),
-              const SizedBox(height: 25),
+                  style: isPortrait == Orientation.portrait ? kRandomItemTxt : kRandomItemTxtSmall, textAlign: TextAlign.center),
+               SizedBox(height: isPortrait == Orientation.portrait ? 55 : 0),
               Expanded(
                 child: GridView.builder(
                   itemCount: randomList.length,
@@ -93,7 +94,7 @@ class _PlayPageState extends State<PlayPage> {
                     crossAxisCount: kNumRandomElements,
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 2,
-                    childAspectRatio: 6 / 9,
+                    childAspectRatio: 8 / 9,
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
@@ -109,7 +110,7 @@ class _PlayPageState extends State<PlayPage> {
                             child: Image.asset(
                               'assets/$categoryName/${randomList[index]}.jpg',
                               height: 200,
-                              fit: BoxFit.cover,
+                              fit: isPortrait == Orientation.portrait ? BoxFit.cover : BoxFit.fitWidth,
                             ),
                           ),
                         ),

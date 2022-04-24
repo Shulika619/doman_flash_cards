@@ -12,6 +12,7 @@ class SelectedCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isPortrait = MediaQuery.of(context).orientation;
     final categoryName = CategoryList.items[indexCategory].name;
     final categoryItems = CategoryList.items[indexCategory].imgList;
 
@@ -31,8 +32,8 @@ class SelectedCategory extends StatelessWidget {
             child: GridView.builder(
               key: const PageStorageKey<String>('gridPage'),
               itemCount: CategoryList.items[indexCategory].imgList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount:  isPortrait == Orientation.portrait ? 2 : 4,
                 mainAxisSpacing: 5,
                 crossAxisSpacing: 2,
                 childAspectRatio: 6 / 9,
