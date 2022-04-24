@@ -3,6 +3,7 @@ import 'package:doman_flash_cards/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:just_audio/just_audio.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({required this.indexCategory, Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class PlayPage extends StatefulWidget {
 }
 
 class _PlayPageState extends State<PlayPage> {
+  final _player = AudioPlayer();
   late String categoryName;
   late final List<String> imgList;
   late List<String> randomList;
@@ -29,14 +31,22 @@ class _PlayPageState extends State<PlayPage> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _player.dispose();
+    super.dispose();
+  }
+
   void randomCards() {
     imgList.shuffle();
     randomList = imgList.sublist(0, kNumRandomElements);
     randonItem = randomList[random.nextInt(kNumRandomElements)];
   }
 
-  void resultCheck() {
+  Future<void> resultCheck() async {
     if (playerChose == randonItem) {
+      await _player.setAsset('audio/true.mp3');
+      _player.play();
       Fluttertoast.showToast(
           msg: '✅ Правильный ответ!',
           fontSize: 18,
@@ -47,6 +57,8 @@ class _PlayPageState extends State<PlayPage> {
         });
       });
     } else {
+      await _player.setAsset('audio/false.mp3');
+      _player.play();
       Fluttertoast.showToast(
           msg: '⛔️ Неправильный ответ!',
           fontSize: 18,
