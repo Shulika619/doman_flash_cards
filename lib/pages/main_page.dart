@@ -18,10 +18,8 @@ class MainPage extends StatelessWidget {
                 itemCount: CategoryList.items.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    // elevation: 0,
                     color: Colors.transparent,
                     child: ListTile(
-                      // dense: true,
                       onTap: () {
                         Navigator.push(
                             context, MaterialPageRoute(builder: (context) => SelectedCategory(indexCategory: index)));

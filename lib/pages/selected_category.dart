@@ -43,8 +43,7 @@ class SelectedCategory extends StatelessWidget {
                   child: GridTile(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15.0),
-                      child: Image.asset(
-                        'assets/$categoryName/${categoryItems[index]}.jpg',
+                      child: Image.asset('assets/$categoryName/${categoryItems[index]}.jpg',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -62,7 +61,7 @@ class SelectedCategory extends StatelessWidget {
         },
         backgroundColor: Colors.green,
         foregroundColor: Colors.white,
-        label: const Text(kTextPlay),
+        label: kTextPlay,
         icon: const Icon(Icons.play_arrow),
         // backgroundColor: Colors.pink,
       ),floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
