@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.doman_flash_cards">
    <application
-        android:label="Карточки Домана"
+        android:label="Обучающие карточки Домана"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
