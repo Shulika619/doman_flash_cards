@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-const String kTitle = 'Карточки Домана';
+const String kTitle = 'Обучающие карточки Домана';
 const String kPlayAppBarTxt = 'Проверь свои знания';
 const int kNumRandomElements = 2;
 
