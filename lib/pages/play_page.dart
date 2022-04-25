@@ -74,7 +74,7 @@ class _PlayPageState extends State<PlayPage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: const Text(kPlayAppBarTxt),
+        title: const Text(kPlayAppBarTxt, style: kTitleAppBar,),
         centerTitle: true,
       ),
       body: Container(

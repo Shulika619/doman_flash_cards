@@ -75,8 +75,15 @@ flutter:
       - assets/транспорт/
       - assets/фрукты и ягоды/
       - assets/цвета/
-      
 
+  fonts:
+    - family: Lobster
+      fonts:  
+        - asset: font/Lobster-Regular.ttf
+    - family: Neucha
+      fonts:  
+        - asset: font/Neucha-Regular.ttf
+        
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

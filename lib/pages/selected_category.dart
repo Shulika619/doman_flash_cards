@@ -21,7 +21,7 @@ class SelectedCategory extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text(categoryName),
+        title: Text(categoryName, style: kTitleAppBar),
         centerTitle: true,
       ),
       body: Container(

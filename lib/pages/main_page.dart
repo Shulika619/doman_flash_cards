@@ -25,10 +25,10 @@ class MainPage extends StatelessWidget {
                             context, MaterialPageRoute(builder: (context) => SelectedCategory(indexCategory: index)));
                       },
                       title: Text(CategoryList.items[index].name.toUpperCase(),
-                          style: kTextBold),
+                          style: kListTxt),
                       subtitle: Text(
                           'количество карточек: ${CategoryList.items[index].imgList.length}'),
-                      leading: const FlutterLogo(size: 70),
+                      leading: CircleAvatar(backgroundImage: AssetImage(CategoryList.items[index].imgPath),radius: 28,),
                       trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                   );
