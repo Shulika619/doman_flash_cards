@@ -1,16 +1,28 @@
 # doman_flash_cards
+Обучающие карточки Домана
 
-A new Flutter project.
+![222](https://user-images.githubusercontent.com/99508083/174192804-f7e78918-a1db-469f-ab16-352ccceb5a99.jpg)
 
-## Getting Started
+Изучай мир и проверяй знания в простой игре.
 
-This project is a starting point for a Flutter application.
+Карточки Домана являются основой интеллектуального развития ребенка для изучения мира. Методика предполагает использование карточек, которые содержат картинку предмета и его название. Эти карточки объединены в тематические наборы (категории). Ребенку показывают их несколько раз в день на небольшой промежуток времени.
 
-A few resources to get you started if this is your first Flutter project:
+Приложение содержит 12 категорий:
+- Геометрические фигуры,
+- Животные,
+- Мебель и интерьер,
+- Музыкальные инструменты,
+- Насекомые,
+- Овощи и травы,
+- Одежда и обувь,
+- Посуда,
+- Продукты,
+- Транспорт,
+- Фрукты и ягоды
+- Цвета
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Ссылки
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [AppGallery](https://appgallery.huawei.com/app/C106055323)
+
+
